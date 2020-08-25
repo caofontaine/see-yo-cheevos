@@ -1,4 +1,10 @@
+# See Yo Cheevos
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Using the [X API](https://xapi.us/), this application will allow to search for a user's Xbox gamertag and display their achievements in games if publically available.
+
+This application is not affiliated with Microsoft, the Xbox brand, or any game developers or publishers. I just love Xbox achievements.
 
 ## Available Scripts
 
