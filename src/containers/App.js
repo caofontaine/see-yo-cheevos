@@ -7,7 +7,8 @@ class App extends Component {
     super();
     this.state = {
       gamerTag: '',
-      gamerTagId: ''
+      gamerTagId: '',
+      achievements: []
     }
   }
 
@@ -15,8 +16,8 @@ class App extends Component {
     this.setState({gamerTag: event.target.value});
   }
 
-  getGamerTagId = () => {
-    fetch(`https://xapi.us//v2/xuid/${this.state.gamerTag}`, {
+  getGamerTagId = async () => {
+    await fetch(`/v2/xuid/${this.state.gamerTag}`, {
       method: 'get',
       headers: {
         'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
@@ -33,6 +34,25 @@ class App extends Component {
     });
   }
 
+  getAchievements = async () => {
+    await this.getGamerTagId();
+    fetch(`/v2/${this.state.gamerTagId}/xbox360games`, {
+      method: 'get',
+      headers: {
+        'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(x360Ach => {
+      console.log(x360Ach);
+      //this.setState({gamerTagId: gTagId});
+    })
+    .catch(err => {
+      console.log("No Xbox 360 achievements found.");
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,7 +61,7 @@ class App extends Component {
             Work in progress...
           </p>
         </header>
-        <UserSearch setGamerTag={this.setGamerTag} getGamerTagId={this.getGamerTagId} />
+        <UserSearch setGamerTag={this.setGamerTag} getAchievements={this.getAchievements} />
       </div>
     );
   }
