@@ -42,27 +42,39 @@ class App extends Component {
     });
   }
 
+  getAchievementData = async (type) => {
+    const resp = await fetch(`/v2/${this.state.gamerTagId}/${type}games`, {
+      method: 'get',
+      headers: {
+        'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await resp.json();
+
+    return data.titles;
+  }
+
   getAchievements = async () => {
+    let achList = [];
     await this.getGamerTagId();
     if (this.state.gamerTagId) {
       console.log('Gamertag found. Obtaining achievements...');
 
-      fetch(`/v2/${this.state.gamerTagId}/xbox360games`, {
-        method: 'get',
-        headers: {
-          'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(x360Ach => {
-        console.log(x360Ach);
-        this.setState({achievements: x360Ach.titles});
-        console.log(this.state.achievements);
-      })
-      .catch(err => {
-        console.log("Error getting Xbox 360 achievements.");
+      this.getAchievementData('xbox360').then(resp => {
+        console.log(resp);
+        achList.push(resp);
       });
+
+      this.getAchievementData('xboxone').then(resp => {
+        console.log(resp);
+        achList.push(resp);
+      });
+
+      this.setState({achievements: achList});
+      console.log(this.state.achievements);
+
     }
     else {
       console.log('Gamertag not found. No gamertag id to use.')
