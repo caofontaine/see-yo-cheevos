@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserSearch from '../components/UserSearch/UserSearch';
+import AchList from '../components/AchList/AchList';
 import './App.css';
 
 class App extends Component {
@@ -26,16 +27,7 @@ class App extends Component {
     })
     .then(response => response.json())
     .then(gTagId => {
-      // If response returns a 404, meaning gamertag not found to obtain gamertag id,
-      // throw an error.
-      if (gTagId.success === false) {
-        throw new Error ('Gamertag not found.');
-      }
-      else {
-        console.log(gTagId);
         this.setState({gamerTagId: gTagId});
-      }
-
     })
     .catch(err => {
       console.log("Error getting gamertag id.");
@@ -57,19 +49,23 @@ class App extends Component {
   }
 
   getAchievements = async () => {
+    // Reset state when executing new searches.
+    if (this.state.gamerTagId) this.setState({gamerTagId: ''});
     let achList = [];
     await this.getGamerTagId();
     if (this.state.gamerTagId) {
       console.log('Gamertag found. Obtaining achievements...');
 
       this.getAchievementData('xbox360').then(resp => {
-        console.log(resp);
-        achList.push(resp);
+        resp.forEach(game => {
+          achList.push(game);
+        })
       });
 
       this.getAchievementData('xboxone').then(resp => {
-        console.log(resp);
-        achList.push(resp);
+        resp.forEach(game => {
+          achList.push(game);
+        })
       });
 
       this.setState({achievements: achList});
@@ -84,12 +80,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Work in progress...
-          </p>
-        </header>
         <UserSearch setGamerTag={this.setGamerTag} getAchievements={this.getAchievements} />
+        <AchList achievements={this.state.achievements}/>
       </div>
     );
   }
