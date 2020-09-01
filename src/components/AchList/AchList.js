@@ -3,14 +3,15 @@ import Game from '../Game/Game';
 
 const AchList = ({ achievements }) => {
 	return (
-		<div>
+		<div id='achList'>
 			{
-				achievements.map((game, i) => {
+				achievements.map((game) => {
 					return (
 						<Game
-							key={game[i].titleId}
-							name={game[i].name}
-							currentGS = {game[i].currentGamerscore}
+							key={game.titleId}
+							id={game.titleId}
+							name={game.name}
+							currentGS = {game.currentGamerscore}
 						/>
 					);
 				})

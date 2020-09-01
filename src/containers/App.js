@@ -17,7 +17,45 @@ class App extends Component {
     this.setState({gamerTag: event.target.value});
   }
 
-  getGamerTagId = async () => {
+  getAchievements = async () => {
+    await fetch(`/v2/xuid/${this.state.gamerTag}`, {
+      method: 'get',
+      headers: {
+        'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(gTagId => {
+      if (gTagId.success === false) {
+        console.log('Gamertag ID not found.');
+      }
+      else {
+        this.setState({gamerTagId: gTagId});
+        console.log(this.state.gamerTagId);
+      }
+    })
+    .catch(err => {
+      console.log("Error getting gamertag id.");
+    });
+
+    fetch(`/v2/${this.state.gamerTagId}/xbox360games`, {
+      method: 'get',
+      headers: {
+        'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({achievements: data.titles});
+    })
+    .catch(err => {
+      console.log("Error getting Xbox 360 games.");
+    });
+  }
+
+  /*getGamerTagId = async () => {
     await fetch(`/v2/xuid/${this.state.gamerTag}`, {
       method: 'get',
       headers: {
@@ -75,13 +113,16 @@ class App extends Component {
     else {
       console.log('Gamertag not found. No gamertag id to use.')
     }
-  }
+  }*/
 
   render() {
     return (
       <div className="App">
         <UserSearch setGamerTag={this.setGamerTag} getAchievements={this.getAchievements} />
-        <AchList achievements={this.state.achievements}/>
+        {this.state.achievements.length > 0 ?
+          <AchList achievements={this.state.achievements} /> :
+          <div id="placeholder"></div>
+        }
       </div>
     );
   }
