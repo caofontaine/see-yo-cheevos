@@ -12,6 +12,7 @@ const AchList = ({ achievements }) => {
 							id={game.titleId}
 							name={game.name}
 							currentGS = {game.currentGamerscore}
+							maxGS = {game.totalGamerscore ? game.totalGamerscore : game.maxGamerscore}
 						/>
 					);
 				})
