@@ -16,7 +16,7 @@ class App extends Component {
   setGamerTag = (event) => {
     this.setState({gamerTag: event.target.value});
   }
-  
+
   getGamerTagId = async () => {
     await fetch(`/v2/xuid/${this.state.gamerTag}`, {
       method: 'get',
@@ -68,9 +68,7 @@ class App extends Component {
         })
       });
 
-      console.log(achList);
       this.setState({achievements: achList});
-      console.log(this.state.achievements);
 
     }
     else {
@@ -79,11 +77,13 @@ class App extends Component {
   }
 
   render() {
+    const filteredGames = this.state.achievements.filter(game => game.currentGamerscore > 0);
+
     return (
       <div className="App">
         <UserSearch setGamerTag={this.setGamerTag} getAchievements={this.getAchievements} />
         {this.state.achievements.length > 0 ?
-          <AchList achievements={this.state.achievements} /> :
+          <AchList achievements={filteredGames} /> :
           <div id="placeholder"></div>
         }
       </div>

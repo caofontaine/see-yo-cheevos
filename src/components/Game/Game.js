@@ -1,12 +1,13 @@
 import React from 'react';
 
 const Game = ({ id, name, currentGS, maxGS }) => {
+const pct = (currentGS/maxGS) * 100;
+
 	return (
-		<div id='game'>
-      <h1>{id}</h1>
+		<div id={id} className='game'>
 			<h2>{name}</h2>
-			<h3>{currentGS}</h3>
-			<h4>{maxGS}</h4>
+			<h3>{currentGS}/{maxGS}</h3>
+			<hr style={{width: `${pct}%`}}/>
 		</div>
 	)
 }
