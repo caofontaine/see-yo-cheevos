@@ -1,4 +1,5 @@
 import React from 'react';
+import './Game.css';
 
 const Game = ({ id, name, currentGS, maxGS }) => {
 const pct = (currentGS/maxGS) * 100;
