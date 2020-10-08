@@ -1,4 +1,13 @@
+.game {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 hr {
   background-color: #76B900;
-  height: 5px;;
+  height: 5px;
+  margin-left: 0;
+  text-align: left;
 }

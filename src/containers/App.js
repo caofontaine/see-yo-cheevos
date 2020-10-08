@@ -81,6 +81,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>SEE YO CHEEVOS</h1>
         <UserSearch setGamerTag={this.setGamerTag} getAchievements={this.getAchievements} />
         {this.state.achievements.length > 0 ?
           <AchList achievements={filteredGames} /> :
