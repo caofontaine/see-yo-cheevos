@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   getGamerTagId = async () => {
-    await fetch(`/v2/xuid/${this.state.gamerTag}`, {
+    await fetch(`https://xapi.us/v2/xuid/${this.state.gamerTag}`, {
       method: 'get',
       headers: {
         'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   getAchievementData = async (type) => {
-    const resp = await fetch(`/v2/${this.state.gamerTagId}/${type}games`, {
+    const resp = await fetch(`https://xapi.us/v2/${this.state.gamerTagId}/${type}games`, {
       method: 'get',
       headers: {
         'X-AUTH': '3a5eb14d1a580dc2d1a0e9b10b31fa5cc5958616',
