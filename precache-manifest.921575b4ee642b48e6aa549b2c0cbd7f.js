@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "73b27c27e05364de2b649ec3af789b7b",
+    "revision": "df24e8caec77ba5472b44c53d0d620a9",
     "url": "/see-yo-cheevos/index.html"
   },
   {
-    "revision": "b19629a5772e2105e2c2",
+    "revision": "e656a1befa422051bfe8",
     "url": "/see-yo-cheevos/static/css/main.5b43234f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/see-yo-cheevos/static/js/2.de929259.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b19629a5772e2105e2c2",
-    "url": "/see-yo-cheevos/static/js/main.1db0d848.chunk.js"
+    "revision": "e656a1befa422051bfe8",
+    "url": "/see-yo-cheevos/static/js/main.1e33b925.chunk.js"
   },
   {
     "revision": "4a9cdff724937d37c2df",

@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/see-yo-cheevos/static/css/main.5b43234f.chunk.css",
-    "main.js": "/see-yo-cheevos/static/js/main.1db0d848.chunk.js",
-    "main.js.map": "/see-yo-cheevos/static/js/main.1db0d848.chunk.js.map",
+    "main.js": "/see-yo-cheevos/static/js/main.1e33b925.chunk.js",
+    "main.js.map": "/see-yo-cheevos/static/js/main.1e33b925.chunk.js.map",
     "runtime-main.js": "/see-yo-cheevos/static/js/runtime-main.3349b453.js",
     "runtime-main.js.map": "/see-yo-cheevos/static/js/runtime-main.3349b453.js.map",
     "static/js/2.de929259.chunk.js": "/see-yo-cheevos/static/js/2.de929259.chunk.js",
     "static/js/2.de929259.chunk.js.map": "/see-yo-cheevos/static/js/2.de929259.chunk.js.map",
     "index.html": "/see-yo-cheevos/index.html",
-    "precache-manifest.6e9a0f8083ca28ebdbf2cf1795c48df5.js": "/see-yo-cheevos/precache-manifest.6e9a0f8083ca28ebdbf2cf1795c48df5.js",
+    "precache-manifest.921575b4ee642b48e6aa549b2c0cbd7f.js": "/see-yo-cheevos/precache-manifest.921575b4ee642b48e6aa549b2c0cbd7f.js",
     "service-worker.js": "/see-yo-cheevos/service-worker.js",
     "static/css/main.5b43234f.chunk.css.map": "/see-yo-cheevos/static/css/main.5b43234f.chunk.css.map",
     "static/js/2.de929259.chunk.js.LICENSE.txt": "/see-yo-cheevos/static/js/2.de929259.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3349b453.js",
     "static/js/2.de929259.chunk.js",
     "static/css/main.5b43234f.chunk.css",
-    "static/js/main.1db0d848.chunk.js"
+    "static/js/main.1e33b925.chunk.js"
   ]
 }
